@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
+import React, { useState } from "react";
 
 import LogoPath from "@/assets/colorful.svg";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,9 @@ import { useRouter } from "next/navigation";
 import styles from "./Auth.module.scss";
 import Loader from "@/components/loader/Loader";
 import Input from "@/components/Input/Input";
-import AutoSignInCheckBox from "@/components/autoSignInCheckBox/AutoSignInCheckBox";
+import AutoSignInCheckbox from "@/components/autoSignInCheckBox/AutoSignInCheckBox";
+import Divider from "@/components/divider/Divider";
+import Button from "@/components/button/Button";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -26,8 +28,6 @@ const LoginClient = () => {
     e.preventDefault();
     setIsLoading(true);
   };
-
-  const signInWithGoogle = () => {};
 
   return (
     <>
@@ -63,13 +63,25 @@ const LoginClient = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className={styles.group}>
-              자동 로그인, 비밀번호 수정
-              <AutoSignInCheckBox
+              {/* 자동 로그인, 비밀번호 수정 */}
+              <AutoSignInCheckbox
                 checked={isAutoLogin}
                 onChange={(e) => setIsAutoLogin(e.target.checked)}
               />
             </div>
-            <div className={styles.buttonGroup}>버튼</div>
+
+            <div className={styles.buttonGroup}>
+              <Button>로그인</Button>
+
+              <Divider />
+
+              <Button>회원가입</Button>
+              <Divider />
+
+              <div>
+                <Button>구글 로그인</Button>
+              </div>
+            </div>
           </form>
         </div>
       </section>
