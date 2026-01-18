@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./AutoSignInCheckBox.module.scss";
+import styles from "./AutoSignInCheckbox.module.scss";
 import Checkbox from "../checkbox/Checkbox";
 import Tooltip from "../tooltip/Tooltip";
 const AutoSignInCheckBox = ({

@@ -1,0 +1,57 @@
+"use client";
+import Button from "@/components/button/Button";
+import Heading from "@/components/heading/Heading";
+import Input from "@/components/Input/Input";
+import Loader from "@/components/loader/Loader";
+import Link from "next/link";
+import React, { useState } from "react";
+
+const ResetClient = () => {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const resetPassword = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+  };
+
+  return (
+    <>
+      {isLoading && <Loader />}
+      <section className={StyleSheet.page}>
+        <div className={StyleSheet.form}>
+          <Heading
+            title="비밀번호 업데이트"
+            subtitle="이메일 주소를 입력해주세요."
+          />
+
+          <form onSubmit={resetPassword}>
+            <Input
+              type="text"
+              placeholder="Email"
+              required
+              value={email}
+              className={StyleSheet.control}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <div>
+              <Button type="submit">업데이트</Button>
+            </div>
+
+            <div>
+              <p>
+                <Link href="/login">-로그인</Link>
+              </p>
+              <p>
+                <Link href="/register">-회원가입</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default ResetClient;

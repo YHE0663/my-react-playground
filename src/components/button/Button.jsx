@@ -10,7 +10,7 @@ const Button = ({
   width,
   ...restProps
 }) => {
-  const coposeClasses = classNames(
+  const composeClasses = classNames(
     styles.button,
     secondary ? styles.secondary : styles.primary
   );
@@ -23,11 +23,11 @@ const Button = ({
 
   return (
     <button
-      className={coposeClasses}
+      className={composeClasses}
       type={type}
       style={style}
       {...restProps}
-    ></button>
+    />
   );
 };
 
