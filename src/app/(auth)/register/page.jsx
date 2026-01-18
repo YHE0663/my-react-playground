@@ -1,7 +1,8 @@
 import React from "react";
+import RegisterClient from "./RegisterClient";
 
-const RregisterPage = () => {
-  return <div>register</div>;
+const Rregister = () => {
+  return <RegisterClient />;
 };
 
-export default RregisterPage;
+export default Rregister;
