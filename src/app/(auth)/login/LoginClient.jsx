@@ -11,6 +11,7 @@ import Input from "@/components/Input/Input";
 import AutoSignInCheckbox from "@/components/autoSignInCheckBox/AutoSignInCheckBox";
 import Divider from "@/components/divider/Divider";
 import Button from "@/components/button/Button";
+import Link from "next/link";
 
 const LoginClient = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +29,8 @@ const LoginClient = () => {
     e.preventDefault();
     setIsLoading(true);
   };
+
+  const signInWithGoogle = () => {};
 
   return (
     <>
@@ -71,15 +74,19 @@ const LoginClient = () => {
             </div>
 
             <div className={styles.buttonGroup}>
-              <Button>로그인</Button>
+              <Button type="submit" width="100%">
+                로그인
+              </Button>
 
               <Divider />
 
-              <Button>회원가입</Button>
+              <Button width="100%" secondary>
+                <Link href={"/register"}>회원가입</Link>
+              </Button>
               <Divider />
 
               <div>
-                <Button>구글 로그인</Button>
+                <Button onClick={signInWithGoogle}>구글 로그인</Button>
               </div>
             </div>
           </form>
