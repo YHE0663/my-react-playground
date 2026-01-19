@@ -1,8 +1,8 @@
 import React from "react";
 import ResetClient from "./ResetClient";
 
-const ResetPage = () => {
+const Reset = () => {
   return <ResetClient />;
 };
 
-export default ResetPage;
+export default Reset;

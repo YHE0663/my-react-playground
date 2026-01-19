@@ -28,7 +28,7 @@ const RegisterClient = () => {
       {isLoading && <Loader />}
       <section className={styles.page}>
         <div className={styles.container}>
-          <h1 classNAme={styles.logo}>
+          <h1 className={styles.logo}>
             <Image priority src={LogoPath} alt="logo" />
           </h1>
 
