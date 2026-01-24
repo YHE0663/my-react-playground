@@ -1,4 +1,4 @@
-import { FILTER_BY, FILTER_BY_CATEGORY } from "@/redux/slice/filterSlice";
+import { FILTER_BY } from "@/redux/slice/filterSlice";
 import {
   selectMaxPrice,
   selectMinPrice,
@@ -13,7 +13,7 @@ import Button from "@/components/button/Button";
 const ProductFilter = () => {
   const [category, setCategory] = useState("All");
   const [brand, setBrand] = useState("All");
-  const [price, setPrice] = useState("10000");
+  const [price, setPrice] = useState(10000);
 
   const products = useSelector(selectProducts);
   const minPrice = useSelector(selectMinPrice);
@@ -27,14 +27,16 @@ const ProductFilter = () => {
 
   const filterCategories = (category) => {
     setCategory(category);
-    dispatch(FILTER_BY_CATEGORY({ products, category: cat }));
   };
 
-  const allBrands = ["All", new Set(products.map((product) => product.brand))];
+  const allBrands = [
+    "All",
+    ...new Set(products.map((product) => product.brand)),
+  ];
 
   useEffect(() => {
     dispatch(FILTER_BY({ products, price, category, brand }));
-  }, [brand, products, dispatch, price, category]);
+  }, [dispatch, products, price, category, brand]);
 
   const clearFilters = () => {
     setCategory("All");
@@ -51,7 +53,7 @@ const ProductFilter = () => {
             <button
               key={cat}
               type="button"
-              className={`${category}` === cat ? `${styles.active}` : ``}
+              className={`${category}` === cat ? `${styles.active}` : ""}
               onClick={() => filterCategories(cat)}
             >
               &#8250; {cat}
@@ -65,7 +67,7 @@ const ProductFilter = () => {
         <select value={brand} onChange={(e) => setBrand(e.target.value)}>
           {allBrands.map((brand) => {
             return (
-              <option key={brand} value={brand}>
+              <option value={brand} key={brand}>
                 {brand}
               </option>
             );
@@ -79,7 +81,7 @@ const ProductFilter = () => {
         <input
           type="range"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={(e) => setPrice(e.target.valueAsNumber)}
           min={minPrice}
           max={maxPrice}
         />
