@@ -1,6 +1,6 @@
 import {
   selectFilteredProducts,
-  SORT_PRODUCT,
+  SORT_PRODUCTS,
 } from "@/redux/slice/filterSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,8 +16,8 @@ const ProductList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(SORT_PRODUCT({ products: filteredProducts, sort }));
-  }, []);
+    dispatch(SORT_PRODUCTS({ products: filteredProducts, sort }));
+  }, [dispatch, filteredProducts, sort]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductPerPage] = useState(10);

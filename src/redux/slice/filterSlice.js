@@ -59,7 +59,7 @@ const filterSlice = createSlice({
 
       state.filteredProducts = temProducts;
     },
-    SORT_PRODUCT: (state, action) => {
+    SORT_PRODUCTS: (state, action) => {
       const { products, sort } = action.payload;
       let temProducts = [];
 
@@ -87,7 +87,7 @@ export const {
   FILTER_BY_CATEGORY,
   FILTER_BY_PRICE,
   FILTER_BY,
-  SORT_PRODUCT,
+  SORT_PRODUCTS,
 } = filterSlice.actions;
 
 export const selectFilteredProducts = (state) => state.filter.filteredProducts;
